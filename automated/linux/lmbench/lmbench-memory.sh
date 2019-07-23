@@ -10,7 +10,7 @@ bandwidth_test() {
     for test in ${test_list}; do
         # bw_mem use MB/s as units.
         # shellcheck disable=SC2154
-        ./bin/"${abi}"/bw_mem 256m "$test" 2>&1 \
+        ./bin/"${abi}"/bw_mem 128m "$test" 2>&1 \
           | awk -v test_case="memory-${test}-bandwidth" \
             '{printf("%s pass %s MB/s\n", test_case, $2)}' \
           | tee -a "${RESULT_FILE}"
