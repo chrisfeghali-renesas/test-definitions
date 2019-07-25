@@ -5,7 +5,7 @@ OUTPUT="$(pwd)/output"
 RESULT_FILE="${OUTPUT}/result.txt"
 export RESULT_FILE
 
-TOTAL_MEMORY=`dmesg | grep "Memory: " | awk '{print $2}' | awk -F "/" '{print $2}' | awk '{print substr($0, 1, length($0)-1)}'`
+TOTAL_MEMORY=`dmesg | grep "Memory: " | awk -F "/" '{print $2}' | awk '{print $1}' | awk '{print substr($0, 1, length($0)-1)}'`
 echo "Total memory available is $TOTAL_MEMORY K"                                 
 MEMORY_MB=$(($TOTAL_MEMORY / 1000))                                              
 BANDWIDTH_MEMORY=$(($MEMORY_MB * 4 / 10))                                        
